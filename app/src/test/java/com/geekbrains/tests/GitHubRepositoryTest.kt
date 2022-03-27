@@ -9,6 +9,7 @@ import okio.Timeout
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import retrofit2.Call
@@ -24,7 +25,8 @@ class GitHubRepositoryTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        //MockitoAnnotations.initMocks(this)
+
         repository = GitHubRepository(gitHubApi)
     }
 
