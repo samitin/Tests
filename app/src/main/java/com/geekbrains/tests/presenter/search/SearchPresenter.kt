@@ -15,7 +15,7 @@ import retrofit2.Response
  */
 
 internal class SearchPresenter internal constructor(
-    private var viewContract: ViewSearchContract?=null,
+    var viewContract: ViewSearchContract?=null,
     private val repository: GitHubRepository
 ) : PresenterSearchContract, GitHubRepositoryCallback {
     override fun onAttach(view: ViewSearchContract) {

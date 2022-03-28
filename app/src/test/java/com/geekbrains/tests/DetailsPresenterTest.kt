@@ -4,7 +4,11 @@ import android.os.Build
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.geekbrains.tests.presenter.details.DetailsPresenter
 import com.geekbrains.tests.view.details.ViewDetailsContract
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.times
+import com.nhaarman.mockito_kotlin.verify
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 
@@ -25,17 +29,27 @@ class DetailsPresenterTest {
     @Test
     fun presenter_onIncrement(){
         presenter.onIncrement()
-        assertEquals(1,view.count)
+        verify(view, times(1)).setCount(1)
     }
     @Test
     fun presenter_onDecrement(){
         presenter.onDecrement()
-        assertEquals(-1,view.count)
+
     }
     @Test
     fun presenter_setCounter(){
         presenter.setCounter(5)
-        assertEquals(5,presenter.count)
+
+    }
+    @Test
+    fun presenter_onAttach(){
+        presenter.onAttach(view)
+
+    }
+    @Test
+    fun presenter_onDetach(){
+        presenter.onDetach()
+
     }
 }
 class ViewTest : ViewDetailsContract{

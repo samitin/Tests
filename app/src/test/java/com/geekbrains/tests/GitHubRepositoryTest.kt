@@ -26,7 +26,7 @@ class GitHubRepositoryTest {
     @Before
     fun setUp() {
         //MockitoAnnotations.initMocks(this)
-
+        Mockito.mock(GitHubApi::class.java)
         repository = GitHubRepository(gitHubApi)
     }
 
