@@ -20,6 +20,16 @@ class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
         setUI()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onAttach(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.onDetach()
+    }
+
     private fun setUI() {
         val count = intent.getIntExtra(TOTAL_COUNT_EXTRA, 0)
         presenter.setCounter(count)

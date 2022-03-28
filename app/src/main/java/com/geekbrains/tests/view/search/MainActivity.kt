@@ -31,6 +31,16 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
         setUI()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onAttach(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.onDetach()
+    }
+
     private fun setUI() {
         toDetailsActivityButton.setOnClickListener {
             startActivity(DetailsActivity.getIntent(this, totalCount))

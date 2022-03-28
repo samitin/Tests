@@ -5,6 +5,7 @@ import com.geekbrains.tests.model.SearchResult
 import com.geekbrains.tests.presenter.search.SearchPresenter
 import com.geekbrains.tests.repository.GitHubRepository
 import com.geekbrains.tests.view.search.ViewSearchContract
+import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -148,5 +149,15 @@ class SearchPresenterTest {
 
         //Убеждаемся, что ответ от сервера обрабатывается корректно
         verify(viewContract, times(1)).displaySearchResults(searchResults, 101)
+    }
+    @Test
+    fun presenter_onAttach(){
+        presenter.onAttach(viewContract)
+        Assert.assertEquals(viewContract,presenter.viewContract)
+    }
+    @Test
+    fun presenter_onDetach(){
+        presenter.onDetach()
+        Assert.assertNull(presenter.viewContract)
     }
 }
